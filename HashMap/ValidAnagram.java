@@ -6,28 +6,51 @@ public class ValidAnagram {
         if(s.length()!=t.length()){
             return false;
         }
-        HashMap<Character, Integer> map = new HashMap<>();
-        for(int i =0; i<s.length();i++){
+        HashMap<Character,Integer> hm = new HashMap<>();
+        for(int i=0;i<s.length();i++){
             char ch = s.charAt(i);
-            map.put(ch, map.getOrDefault(ch, 0)+1);
+            hm.put(ch,hm.getOrDefault(ch, 0)+1);
         }
-        for(int i=0; i<t.length(); i++){
+        for(int i=0;i<t.length();i++){
             char ch = t.charAt(i);
-            if(map.get(ch)!=null){//if value exists
-                if(map.get(ch)==1){
-                    map.remove(ch);
+            if(hm.get(ch)!=null){
+                if(hm.get(ch)==1){
+                    hm.remove(ch);
                 }else{
-                    map.put(ch, map.get(ch)-1);
+                    hm.put(ch,hm.get(ch)-1);
                 }
             }else{
                 return false;
             }
         }
-        return map.isEmpty();
+        return hm.isEmpty();
     }
+    // public static boolean isAnagram(String s, String t){
+    //     if(s.length()!=t.length()){
+    //         return false;
+    //     }
+    //     HashMap<Character, Integer> map = new HashMap<>();
+    //     for(int i =0; i<s.length();i++){
+    //         char ch = s.charAt(i);
+    //         map.put(ch, map.getOrDefault(ch, 0)+1);
+    //     }
+    //     for(int i=0; i<t.length(); i++){
+    //         char ch = t.charAt(i);
+    //         if(map.get(ch)!=null){//if value exists
+    //             if(map.get(ch)==1){
+    //                 map.remove(ch);
+    //             }else{
+    //                 map.put(ch, map.get(ch)-1);
+    //             }
+    //         }else{
+    //             return false;
+    //         }
+    //     }
+    //     return map.isEmpty();
+    // }
     public static void main(String[] args) {
         String s = "race";//O(n)
-        String t = "care";
+        String t = "caree";
 
         System.out.println(isAnagram(s, t));
 

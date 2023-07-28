@@ -196,7 +196,7 @@ public class BinarySearchTree {
 
     // }
 
-    //find inorder traversal and if it is sorted then valid BST
+    //find inorder traversal and if it is sorted then valid BST 
     public static boolean isValidBST(Node root, Node min, Node max){
         if(root == null){
             return true;
