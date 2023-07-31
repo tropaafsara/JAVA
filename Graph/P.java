@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class Cycle {//undirected graph
+public class P {
     static class Edge{
         int src;
         int dest;
@@ -9,7 +9,6 @@ public class Cycle {//undirected graph
             this.dest = d;
         }
     }
-
     public static void createGraph(ArrayList<Edge>[] graph){
         for(int i=0;i<graph.length;i++){
             graph[i] = new ArrayList<>();
@@ -30,53 +29,42 @@ public class Cycle {//undirected graph
 
         graph[4].add(new Edge(4, 3));
     }
-
-    //O(V+E)
-    public static boolean detectCycle(ArrayList<Edge>[] graph){
+    public static boolean detectCycle(ArrayList<Edge> graph[]){
         boolean vis[] = new boolean[graph.length];
-        for(int i=0; i<graph.length;i++){//check each component
+        for(int i=0;i<graph.length;i++){
             if(!vis[i]){
-                if(detectCycleUtil(graph, vis, i, -1)){//i'th node=current node, parent = -1 cz when we start from a node it doesn't have a parent
-                    return true;//cycle exists in one of the graphs
+                if(detectCycleUtil(graph,vis,i,-1)){
+                    return true;
                 }
             }
         }
         return false;
     }
-    //dfs
-    public static boolean detectCycleUtil(ArrayList<Edge>[] graph, boolean vis[], int curr, int par){
-        vis[curr] = true;
-        for(int i=0; i<graph[curr].size(); i++){
+    public static boolean detectCycleUtil(ArrayList<Edge> graph[], boolean vis[], int curr, int par){
+        vis[curr]=true;
+        for(int i=0;i<graph[curr].size();i++){
             Edge e = graph[curr].get(i);
+
             //case-3
-            if(!vis[e.dest]){// if neighbor unvisited & detectCycleUtil true then return true
+            if(!vis[curr]){
                 if(detectCycleUtil(graph, vis, e.dest, curr)){
                     return true;
                 }
-                
             }
+
             //case-1
-            else if(vis[e.dest] && e.dest!=par){
+            if(vis[e.dest] && e.dest!=par){
                 return true;
             }
-            //case-2 -> do nothing, continue;
         }
         return false;
-    }
-    public static void main(String[] args) {
-    //     0 ---------- 3
-    //   / |            |
-    //  /  |            |
-    // 1   |            4
-    //  \  |
-    //   \ |
-    //     2
 
+    }
+
+    public static void main(String[] args) {
         int V = 5;
         ArrayList<Edge> graph[] = new ArrayList[V];
         createGraph(graph);
         System.out.println(detectCycle(graph));
-
-
     }
 }

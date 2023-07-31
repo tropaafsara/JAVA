@@ -40,12 +40,25 @@ public class HasPath {
         graph[6].add(new Edge(6, 5, 1));
     }
 
-    public static boolean  hasPath(ArrayList<Edge>[] graph, int src, int dest, boolean vis[]){
+    // public static boolean  hasPath(ArrayList<Edge>[] graph, int src, int dest, boolean vis[]){
+    //     if(src==dest){
+    //         return true;
+    //     }
+    //     vis[src] = true;
+    //     for(int i=0; i<graph[src].size();i++){
+    //         Edge e = graph[src].get(i);
+    //         if(!vis[e.dest] && hasPath(graph, e.dest, dest, vis)){
+    //             return true;
+    //         }
+    //     }
+    //     return false;
+    // }
+    public static boolean  hasPath(ArrayList<Edge>[]  graph, int src, int dest, boolean[] vis){
         if(src==dest){
             return true;
         }
         vis[src] = true;
-        for(int i=0; i<graph[src].size();i++){
+        for(int i=0;i<graph[src].size();i++){
             Edge e = graph[src].get(i);
             if(!vis[e.dest] && hasPath(graph, e.dest, dest, vis)){
                 return true;
@@ -69,7 +82,7 @@ public class HasPath {
         int V =7;
         ArrayList<Edge>[]  graph = new ArrayList[V];
         createGraph(graph);
-        System.out.println(hasPath(graph, 0, 8, new boolean[V]));
+        System.out.println(hasPath(graph, 0, 5, new boolean[V]));
         
 
        

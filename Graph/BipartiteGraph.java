@@ -79,5 +79,10 @@ public class BipartiteGraph {
     createGraph(graph);
     System.out.println(isBipartite(graph));
 
+
+    //a graph Bipartite or not --> we use graph coloring approach
+    //if a graph is acyclic (doesn't form a cycle) --> Bipartite
+    //Even cycle (Cycle exists but it has even number of nodes) --> Bipartite
+
     }
 }

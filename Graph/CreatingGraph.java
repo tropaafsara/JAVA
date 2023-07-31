@@ -29,7 +29,7 @@ public class CreatingGraph {
 
         int V =5;
         //int[] arr = new arr[V];
-        ArrayList<Edge>[]  graph = new ArrayList[V];//arraylist of edge type array named graph
+        ArrayList<Edge>[]  graph = new ArrayList[V];//Array of arraylist type edge
         //initially the array will be null so we need to make new empty arraylist
         for(int i=0;i<V;i++){
             graph[i] = new ArrayList<>();//at every ith index of graph new arraylist is created

@@ -62,8 +62,9 @@ public class VariableSizeWindow {
         return maxLength;
 
     }
+    
 
-    //Longest subarray with sum divisible by K
+    // Longest subarray with sum divisible by K
     public static int longSubarrWthSumDivByK(int arr[], int k){
         HashMap<Integer, Integer> map = new HashMap<>();
         int prefixSum=0;
@@ -104,21 +105,61 @@ public class VariableSizeWindow {
             if(prefixSum==0){
                 count++;
             }
-            else if(!map.containsKey(prefixSum)){
-                map.put(prefixSum,i);
-            }else{
-                int currentLength = i - map.get(prefixSum);
-                count+=currentLength;
+            // else if(!map.containsKey(prefixSum)){
+            //     map.put(prefixSum,i);
+            // }else{
+            //     int currentLength = i - map.get(prefixSum);
+            //     count++;
+            // }
+
+            if(map.containsKey(prefixSum)){
+                count+=map.get(prefixSum);
             }
+            map.put(prefixSum, map.getOrDefault(prefixSum, 0) + 1);
         }
         return count;
 
     }
+
+    //Longest K unique characters substring
+    public static int longestkSubstr(String s, int k) {
+        int i=0;
+        int j=0;
+        // StringBuilder sb = new StringBuilder();
+        HashMap<Character,Integer> map = new HashMap<>();
+        String str="";
+        int freq=0;
+        // int max = Integer.MIN_VALUE;
+        int max = -1;
+        while(j<s.length()){
+            char ch = s.charAt(j);
+            map.put(ch,map.getOrDefault(ch, 0)+1);
+            if(map.size()<k){
+                j++;
+            }
+
+            if(map.size()==k){
+                max = Math.max(max, j-i+1);
+                j++;
+            }   
+            else if(map.size()>k){
+                while(map.size()>k){
+                    Character ch2 = s.charAt(i);
+                    map.put(ch2, map.get(ch2)-1);
+                    if(map.get(ch2)==0){
+                        map.remove(ch2);
+                    }
+                    i++;
+                }
+                j++;
+            }
+        }
+        return max;
+    }
    
     public static void main(String[] args) {
         // int arr[] = {10, 5, 2, 7, 1, 9};
-        // int arr[] = {0,1,2,3,4,5,6,7,8,9};
-        // int k = 3;
+        // int k = 15;
         // System.out.println(lenOfLongSubarr(arr, k));
 
 
@@ -129,7 +170,11 @@ public class VariableSizeWindow {
 
 
 
-        int arr[] = {6,-1,-3,4,-2,2,4,6,-12,-7};
-        System.out.println(zeroFilledSubarray(arr));
+        // int arr[] = {6,-1,-3,4,-2,2,4,6,-12,-7};
+        // System.out.println(zeroFilledSubarray(arr));
+
+        String s = "aabacbebebe";
+        int K = 3;
+        System.out.println(longestkSubstr(s, K));
     }
 }
