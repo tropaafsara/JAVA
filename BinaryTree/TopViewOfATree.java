@@ -49,8 +49,8 @@ public class TopViewOfATree {
             }
             
         }
-        for(int i=min; i<max;i++){
-            System.out.println(map.get(i).data);//print node data
+        for(int i=min; i<=max;i++){
+            System.out.print(map.get(i).data+" ");//print node data
         }
     }
     public static void main(String[] args) {    

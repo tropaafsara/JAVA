@@ -17,6 +17,8 @@ public class BinarySearchTree {
         if(root == null){
             root = new Node(val); //  if root null then create new node & insert value to that node and make it root.
             return root;
+
+            // return new Node(val);
         }
         //____________#2________________
         if(root.data>val){

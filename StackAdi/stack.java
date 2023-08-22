@@ -11,7 +11,7 @@ public class stack {
             }else if(!s.isEmpty() && s.peek()>arr[i]){
                 v[i] = s.peek();
             }else if(!s.isEmpty() && s.peek()<=arr[i]){
-                while(!s.isEmpty() && s.peek()<=arr[i]){
+                while(!s.isEmpty() && s.peek()<=arr[i]){//weird condition
                     s.pop();
                 }
                 if(s.isEmpty()){
@@ -118,8 +118,39 @@ public class stack {
         }
         return v;
     }
-    
 
+    //max area rectangle in binary matrix
+
+
+
+    
+    //next greater right
+    public static int[] nextGreaterRight(int[] temperatures, int n){
+        Stack<Integer> s = new Stack<>();
+        int[] v = new int[n];
+        for(int i=n-1;i>=0;i--){
+            if(s.isEmpty()){
+                v[i]=0;
+            }else if(!s.isEmpty() && temperatures[s.peek()]>temperatures[i]){
+                v[i] = i-s.peek();
+            }else if(!s.isEmpty() && temperatures[s.peek()]<=temperatures[i]){
+                while(!s.isEmpty() && temperatures[s.peek()]<=temperatures[i]){
+                    s.pop();
+                }
+                if(s.isEmpty()){
+                    v[i]=0;
+                }else{
+                    v[i] = i-s.peek();
+                }
+            }
+            s.push(i);
+        }
+        return v;
+    }
+    public static int[] dailyTemperatures(int[] temperatures) {
+        int[] v = nextGreaterRight(temperatures, temperatures.length);
+        return v;
+    }
     public static void main(String[] args) {
         //Next Greater Element
         // long[] arr = {1,3, 2, 4};
@@ -133,6 +164,9 @@ public class stack {
         // Next Greater Element left
         // long[] arr = {1,3, 2, 4};
         // long[] v = nextLargerElementLeft(arr, arr.length);
+        // for (int i = 0; i < v.length; i++) {
+        //     System.out.print(v[i] + " ");
+        // }
         
 
 
@@ -155,6 +189,9 @@ public class stack {
         //     System.out.print(v[i] + " ");
         // }
 
+       
+        int[] temperatures = {73,74,75,71,69,72,76,73};
+        dailyTemperatures(temperatures);
         
         
   
