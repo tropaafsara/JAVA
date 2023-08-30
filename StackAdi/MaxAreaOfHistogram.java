@@ -76,10 +76,11 @@ public class MaxAreaOfHistogram {
     // max area rectangle in binary matrix
     public static int maxAreaOfBinaryMatrix(int M[][], int m, int n) {
         int[] v = new int[m];
-        for (int i = 0; i < m; i++) {
+        for (int i = 0; i < m; i++) {//for one value
             v[i] = M[0][i];
         }
         int max = maxAreaOfHistogram(v, m);
+      
         for (int i = 1; i < n; i++) {
             for (int j = 0; j < m; j++) {
                 if (M[i][j] == 0) {

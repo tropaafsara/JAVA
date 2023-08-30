@@ -17,6 +17,7 @@ public class VariableSizeWindow {
     //     }
     //     return min == Integer.MAX_VALUE?0:min;
     // } 
+    //for positive integers only & characters
     // public static int lenOfLongSubarr(int arr[], int k){
     //     int i=0;
     //     int j=0;
@@ -72,7 +73,7 @@ public class VariableSizeWindow {
         
         for(int i=0;i<arr.length;i++){
             // prefixSum = (prefixSum+arr[i])%k;
-            prefixSum = (prefixSum+arr[i]);
+            prefixSum+=arr[i];
 
             
             // int mod = ((prefixSum % k) + k) % k; // to handle negative test cases
@@ -125,11 +126,7 @@ public class VariableSizeWindow {
     public static int longestkSubstr(String s, int k) {
         int i=0;
         int j=0;
-        // StringBuilder sb = new StringBuilder();
         HashMap<Character,Integer> map = new HashMap<>();
-        String str="";
-        int freq=0;
-        // int max = Integer.MIN_VALUE;
         int max = -1;
         while(j<s.length()){
             char ch = s.charAt(j);
@@ -137,13 +134,38 @@ public class VariableSizeWindow {
             if(map.size()<k){
                 j++;
             }
-
             if(map.size()==k){
                 max = Math.max(max, j-i+1);
                 j++;
             }   
             else if(map.size()>k){
                 while(map.size()>k){
+                    Character ch2 = s.charAt(i);
+                    map.put(ch2, map.get(ch2)-1);
+                    if(map.get(ch2)==0){
+                        map.remove(ch2);
+                    }
+                    i++;
+                }
+                j++;
+            }
+        }
+        return max;
+    }
+    //3. Longest Substring Without Repeating Characters -> all unique characters
+    public static int lengthOfLongestSubstring(String s) {
+        int i=0, j=0;
+        HashMap<Character,Integer> map = new HashMap<>();
+        int max = -1;
+        while(j<s.length()){
+            char ch = s.charAt(j);
+            map.put(ch,map.getOrDefault(ch, 0)+1);
+            if(map.size()==j-i+1){
+                max = Math.max(max, j-i+1);
+                j++;
+            }   
+            else if(map.size()<j-i+1){//duplicate exists
+                while(map.size()<j-i+1){
                     Character ch2 = s.charAt(i);
                     map.put(ch2, map.get(ch2)-1);
                     if(map.get(ch2)==0){
@@ -176,5 +198,8 @@ public class VariableSizeWindow {
         String s = "aabacbebebe";
         int K = 3;
         System.out.println(longestkSubstr(s, K));
+
+        // String s = "pwwkew";
+        // System.out.println(lengthOfLongestSubstring(s));
     }
 }

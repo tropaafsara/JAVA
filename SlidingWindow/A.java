@@ -44,8 +44,6 @@ public class A {
                         l1.remove(l1.get(0));
                     }
                 }
-                
-                
                 i++;
                 j++;
                 
@@ -69,7 +67,7 @@ public class A {
             if (map.containsKey(txt.charAt(j))) {
                 char currentChar = txt.charAt(j);
                 int count = map.get(currentChar); //freq or value
-                count -= 1;
+                count -= 1;//freq
                 map.put(currentChar, count);
                 if (count == 0)
                     cnt--;

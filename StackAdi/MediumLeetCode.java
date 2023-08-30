@@ -19,7 +19,7 @@ public class MediumLeetCode {
         return st.size();
     }
 
-    // Minimum Remove to Make Valid Parentheses
+    // 1249. Minimum Remove to Make Valid Parentheses
     public static String minRemoveToMakeValid(String str) {
         Stack<Integer> s = new Stack<>();
         for (int i = 0; i < str.length(); i++) {

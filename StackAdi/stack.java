@@ -95,7 +95,6 @@ public class stack {
     }
 
     //stock span (similar to nearest greater element to left)
-    
     public static int[] stockspan(int[] stocks, int n){//0(n)
         Stack<Integer> s = new Stack<>();
         int[] v = new int[n];
@@ -119,11 +118,7 @@ public class stack {
         return v;
     }
 
-    //max area rectangle in binary matrix
-
-
-
-    
+    //739. Daily Temperatures
     //next greater right
     public static int[] nextGreaterRight(int[] temperatures, int n){
         Stack<Integer> s = new Stack<>();

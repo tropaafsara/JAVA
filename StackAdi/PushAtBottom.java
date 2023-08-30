@@ -33,18 +33,18 @@ public class PushAtBottom {
 
 
     //delete stack 
-    public static void deleteMiddle(Stack<Integer> s, int val){
-        if(s.size()==((val+1)/2)){
+    public static void deleteMiddle(Stack<Integer> s, int sz){
+        if(s.size()==((sz+1)/2)){
         // if(s.size()==(val/2)+1){
                 s.pop();
                 return;
              }
         int top = s.pop();
-        deleteMiddle(s, val);
+        deleteMiddle(s, sz);
         s.push(top);
     }
-    public static Stack<Integer> print(Stack<Integer> s, int val) {
-        deleteMiddle(s, val);
+    public static Stack<Integer> print(Stack<Integer> s, int sz) {
+        deleteMiddle(s, sz);
         return s;
     }
     public static void main(String[] args) {
@@ -54,12 +54,12 @@ public class PushAtBottom {
 
         //delete middle value from stack
         Stack<Integer> s = new Stack<>();
-        s.push(1);
-        s.push(2);
-        s.push(3);
-        s.push(4);
-        s.push(5);
-        s.push(6);
+        s.push(10);
+        s.push(20);
+        s.push(30);
+        s.push(40);
+        s.push(50);
+        // s.push(6);
         // System.out.println("stack size = " +s.size());
 
         // Stack<Integer> res = print(s,s.size());

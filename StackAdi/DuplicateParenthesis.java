@@ -25,7 +25,7 @@ public class DuplicateParenthesis {
 
     }
     public static void main(String[] args) {
-        String str = "(b+c-d+(c))";
+        String str = "((a+b)+((c+d)))";
         System.out.println(duplicateParenthesis(str));
 
     }
