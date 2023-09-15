@@ -1,3 +1,1 @@
-if(nums[i]%2!=0){
-                //     count--;
-                // }
+System.out.println();

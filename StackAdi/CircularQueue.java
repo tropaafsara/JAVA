@@ -17,7 +17,7 @@ public class CircularQueue {
             return rear==-1 && front==-1;//queue empty (true)
         }
         public static boolean isFull(){
-            return (rear+1)%size == front;
+            return (rear+1)%size == front;//rear want to go ahead but in the next index front is there.
         }
 
         public static void add(int val){
@@ -55,6 +55,7 @@ public class CircularQueue {
     }
 
     //Circular tour
+    //since it's a circular tour, if we move 2n distance if the distance not got circular tour wont exist
         public static int tour(int petrol[], int distance[]){
             int required = 0;
             int extra = 0;
@@ -86,8 +87,8 @@ public class CircularQueue {
         //     q.remove();
         // }
            
-        int petrol[] = {4,6,7,4};
-        int distance[] = {6,5,3,5};
+        int petrol[] = {4,4,1,5,1};
+        int distance[] = {5,1,2,3,4};
         int res = tour(petrol, distance);
         System.out.println(res);
 

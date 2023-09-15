@@ -1,8 +1,5 @@
-import java.util.Stack;
-
-public class K {
-
+public class A {
     public static void main(String[] args) {
-
+        System.out.println("hi");
     }
 }

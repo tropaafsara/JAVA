@@ -31,7 +31,7 @@ public class MaxAreaOfHistogram {
         int[] v = new int[n];
         for (int i = n - 1; i >= 0; i--) {
             if (s.isEmpty()) {
-                v[i] = i + 1;
+                v[i] = n;
             } else if (!s.isEmpty() && arr[s.peek()] < arr[i]) {
                 v[i] = s.peek();
             } else if (!s.isEmpty() && arr[s.peek()] >= arr[i]) {
@@ -53,16 +53,16 @@ public class MaxAreaOfHistogram {
         int[] nsr = nearestSmallerElementRight(stocks, n);
         int[] nsl = nearestSmallerElementLeft(stocks, n);
 
-        // System.out.print("nsl = ");
-        // for (int i = 0; i < nsl.length; i++) {
-        // System.out.print(nsl[i] + " ");
-        // }
-        // System.out.println();
-        // System.out.print("nsr = ");
-        // for (int i = 0; i < nsr.length; i++) {
-        // System.out.print(nsr[i] + " ");
-        // }
-        // System.out.println();
+        System.out.print("nsl = ");
+        for (int i = 0; i < nsl.length; i++) {
+        System.out.print(nsl[i] + " ");
+        }
+        System.out.println();
+        System.out.print("nsr = ");
+        for (int i = 0; i < nsr.length; i++) {
+        System.out.print(nsr[i] + " ");
+        }
+        System.out.println();
 
         int[] width = new int[n];
         int maxArea = Integer.MIN_VALUE;
@@ -100,6 +100,7 @@ public class MaxAreaOfHistogram {
         int row = matrix.length;
         int col = matrix[0].length;
         int[][] M = new int[row][col];
+        //convert character into integer
         for(int i=0;i<row;i++){
             for(int j=0;j<col;j++){
                 M[i][j] = matrix[i][j]-'0';
@@ -110,10 +111,10 @@ public class MaxAreaOfHistogram {
 
     public static void main(String[] args) {
         // max area of histogram
-        // int[] stocks = {6,2,5,4,5,1,6};
-        // // int[] stocks = {2,1,5,6,2,3};
-        // int v = maxAreaOfHistogram(stocks, stocks.length);
-        // System.out.println(v);
+        int[] stocks = {6,2,5,4,5,1,6};
+        // int[] stocks = {2,1,5,6,2,3};
+        int v = maxAreaOfHistogram(stocks, stocks.length);
+        System.out.println(v);
 
         int n = 4;// row
         int m = 5;// col
@@ -127,7 +128,7 @@ public class MaxAreaOfHistogram {
         // {1, 1, 1, 1},
         // {1, 1, 0, 0}};
 
-        int res = maxAreaOfBinaryMatrix(M, m, n);
-        System.out.println(res);
+        // int res = maxAreaOfBinaryMatrix(M, m, n);
+        // System.out.println(res);
     }
 }

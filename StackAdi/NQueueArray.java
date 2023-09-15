@@ -1,8 +1,11 @@
 public class NQueueArray {
     static class Queue{
+        //object properties
         static int arr[];
         static int size;
         static int rear;
+
+        //constructors creates object
         Queue(int n){
             arr= new int[n];
             size = n;

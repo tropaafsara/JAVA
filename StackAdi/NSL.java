@@ -23,10 +23,6 @@ public class NSL {
         }
         return v;
     }
-    public static int nextGreaterElementIII(int n){
-        String str = Integer.toString(n);//convert integer to string
-        char[] arr = str.toCharArray();
-    }
     public static void main(String[] args) {
         // nearest smaller element to left
         long[] arr = {6,5,3,74,2,1};
