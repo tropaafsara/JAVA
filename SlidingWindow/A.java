@@ -127,13 +127,13 @@ public class A {
 
 
         //1st -ve in every min size of k
-        // int[] arr = {12,-1,-7,8,-15,30,13,28};
-        // int subarray_size = 3;
-        // List<Integer> a = firstNegSubarrayofSizek(arr, subarray_size);
-        // for(int i=0;i<a.size();i++){
-        //     System.out.print(a.get(i)+" ");
-        // }
-        // System.out.println();
+        int[] arr = {12,-1,-7,8,-15,30,13,28};
+        int subarray_size = 3;
+        List<Integer> a = firstNegSubarrayofSizek(arr, subarray_size);
+        for(int i=0;i<a.size();i++){
+            System.out.print(a.get(i)+" ");
+        }
+        System.out.println();
 
 
         //Count occurance of anagram
@@ -143,7 +143,7 @@ public class A {
         // System.out.println(res);
 
 
-        String s = "abciiidef";
-        System.out.println(maxVowels(s, 3));
+        // String s = "abciiidef";
+        // System.out.println(maxVowels(s, 3));
     }
 }

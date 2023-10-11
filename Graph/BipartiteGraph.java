@@ -83,6 +83,7 @@ public class BipartiteGraph {
     //a graph Bipartite or not --> we use graph coloring approach
     //if a graph is acyclic (doesn't form a cycle) --> Bipartite
     //Even cycle (Cycle exists but it has even number of nodes) --> Bipartite
+    //Odd cycle (Cycle exists but it has odd number of nodes) --> non-Bipartite
 
     }
 }

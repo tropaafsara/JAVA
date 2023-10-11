@@ -124,8 +124,79 @@ public class Practice {
             endCol--;
         }
     }
+    public static int diagonalSum(int[][] mat) {
+        
+        
+        // for(int i=0;i<mat.length;i++){
+        //     for(int j=0;j<mat[0].length;j++){
+        //         if(i==j){
+        //             sum+=mat[i][j];
+        //         }
+        //         else if(i+j == mat.length-1){
+        //             sum+=mat[i][j];
+        //         }
+        //     }
+        // }
+        int sum = 0;
+        for(int i=0;i<mat.length;i++){
+            //primary diagonal
+            sum+=mat[i][i];
+            //secondary diagonal
+            if(i!=mat.length-1-i){ //i!=j 
+                sum+=mat[i][mat.length-i-1];
+            }
+            
+        }
+        return sum;
+    }
+    public static int binarySearch(int[] arr,int val){
+        int start =0;
+        int end =arr.length-1;
+        while(start<=end){
+            int mid = start+(end-start)/2;
+            if(val==arr[mid]){
+                return mid;
+            }
+            else if(val>arr[mid]){
+                start = mid+1;
+            }else if(val<arr[mid]){
+                end = mid-1;
+            }
+
+        }
+        return -1;
+    }
+    public boolean searchMatrix(int[][] matrix, int target) {
+        //staircase serach
+        int row =0;
+        int col = matrix[0].length-1;
+        while(row<matrix.length && col>=0){
+            if(matrix[row][col]==target){
+                return true;
+            }else if(target<matrix[row][col]){
+                col--;
+            }
+            else{
+                row++;
+            }
+        }
+        return false;
+        }
+    
+        //
+        public static int[][] transpose(int[][] matrix) {
+            int row = matrix.length-1;
+            int col = matrix[0].length-1;
+            int[][] transposedMatrix = new int[row][col];
+            for(int i=0;i<col;i++){
+                for(int j=0;j<row;j++){
+                    transposedMatrix[j][i] = matrix[i][j];
+                } 
+            } 
+            return transposedMatrix;
+        }
     public static void main(String[] args) {
-       int[] nums = {1,2};
-       System.out.println(solve2(nums));
+       int[] nums = {5,10,1,5,2};
+       System.out.println(solve10(nums,1));
     }
 }

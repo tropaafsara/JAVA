@@ -1,22 +1,7 @@
 import java.util.HashMap;
 
 public class VariableSizeWindow {
-    // public static int lenOfSmallSubarr(int arr[], int k){
-    //     int i=0;
-    //     int j=0;
-    //     int sum=0;
-    //     int min =Integer.MAX_VALUE;
-    //     while(j<arr.length){
-    //         sum+=arr[j];
-    //         while(sum>=k){
-    //             min = Math.min(min,j-i+1);
-    //             sum-=arr[i];
-    //             i++;
-    //         }
-    //         j++;
-    //     }
-    //     return min == Integer.MAX_VALUE?0:min;
-    // } 
+  
     //for positive integers only & characters
     // public static int lenOfLongSubarr(int arr[], int k){
     //     int i=0;

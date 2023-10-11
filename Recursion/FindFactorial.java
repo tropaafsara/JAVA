@@ -3,28 +3,31 @@ public class FindFactorial {
         if(n==0){//we can write n == 1 as well
             return 1;
         }
-        int fnm1 = fact(n-1);
-        int fn = n* fact(n-1);
-        return fn;
+        // int fnm1 = fact(n-1);
+        // int fn = n* fact(n-1);
+        // return fn;
+        return n*fact(n-1);
     }
     //sum of N natural number
     public static int calcSum(int n){
         if(n==1){
             return 1;
         }
-        int Snm1 = calcSum(n-1);
-        int Sn = n + Snm1;
-        return Sn;
+        // int Snm1 = calcSum(n-1);
+        // int Sn = n + Snm1;
+        // return Sn;
+        return n+calcSum(n-1);
     }
     //calculate nth term fibonacci
     public static int fib(int n){
         if(n==0 || n==1){
             return n;
         }
-        int fnm1 = fib(n-1);
-        int fnm2 = fib(n-2);
-        int fn = fnm1+fnm2;
-        return fn;
+        // int fnm1 = fib(n-1);
+        // int fnm2 = fib(n-2);
+        // int fn = fnm1+fnm2;
+        // return fn;
+        return fib(n-1)+fib(n-2);
     }
 
     //calculate if an array is sorted or not
@@ -69,7 +72,7 @@ public class FindFactorial {
 
     }
 
-    public static int power(int x, int n){
+    public static int power(int x, int n){//x^n -> x * x^n-1 //O(n)
         if(n==0){
             return 1;
         }
@@ -86,13 +89,13 @@ public class FindFactorial {
         // System.out.println(calcSum(n));
         // System.out.println(fib(n));
 
-        // int arr[] = {2,3,4,5,1};
-        // System.out.println(isSorted(arr, 0));//start from 0th index
+        int arr[] = {2,3,4,5,1};
+        System.out.println(isSorted(arr, 0));//start from 0th index
 
         // int arr[] = {8,3,6,9,5,10,2,5,3};   
         // System.out.println(firstOccurance(arr, 0, 5));
         // System.out.println(lastOccurance(arr, 0, 5));
 
-        System.out.println(power(2, 10));
+        // System.out.println(power(2, 10));
     }
 }

@@ -64,7 +64,7 @@ public class P {
     public static void main(String[] args) {
         int V = 5;
         ArrayList<Edge> graph[] = new ArrayList[V];
-        createGraph(graph);
+        createGraph(graph);//in createGraph we pass arraylist of size 5
         System.out.println(detectCycle(graph));
     }
 }

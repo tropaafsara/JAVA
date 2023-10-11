@@ -20,8 +20,8 @@ public class printNumber {
     }
 
     public static void main(String[] args) {
-        int n=10;
-        printDec(n);
+        int n=5;
+        // printDec(n);
         printInc(n);
     }
 }

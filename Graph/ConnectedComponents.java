@@ -48,7 +48,9 @@ public class ConnectedComponents {
     public static void bfs(ArrayList<Edge>[] graph){
         boolean visited[] = new boolean[graph.length];
         for(int i=0; i<graph.length;i++){
-            bfsUtil(graph, visited);
+            if(!visited[i]){
+                bfsUtil(graph, visited);
+            }
         }
     }
 
@@ -57,7 +59,6 @@ public class ConnectedComponents {
     public static void bfsUtil(ArrayList<Edge>[] graph, boolean visited[]) { // O(V+E) || O(V^2)
         Queue<Integer> q = new LinkedList<>();
         q.add(0);// src
-
         while (!q.isEmpty()) {
             int curr = q.remove();
             if (!visited[curr]) {
@@ -75,7 +76,9 @@ public class ConnectedComponents {
     public static void dfs(ArrayList<Edge>[] graph){
         boolean vis[] = new boolean[graph.length];
         for(int i=0; i<graph.length;i++){
-            dfsUtil(graph, i, vis);
+            if(!vis[i]){
+                dfsUtil(graph, i, vis);
+            }
         }
     }
 

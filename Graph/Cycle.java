@@ -49,12 +49,17 @@ public class Cycle {//undirected graph
         for(int i=0; i<graph[curr].size(); i++){
             Edge e = graph[curr].get(i);
             //case-3
+
+            /* wring code */
+            // if(!vis[e.dest] && detectCycleUtil(graph, vis, e.dest, curr)){// if !vis[e.dest] is false, the detectCycleUtil function will still be called, 
+            //     return true;
+            // }
             if(!vis[e.dest]){// if neighbor unvisited & detectCycleUtil true then return true
                 if(detectCycleUtil(graph, vis, e.dest, curr)){
                     return true;
-                }
-                
+                } 
             }
+            
             //case-1
             else if(vis[e.dest] && e.dest!=par){
                 return true;

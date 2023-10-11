@@ -2,31 +2,36 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Stack;
 public class practice {
-    public static int[] solve(int[] arr, int n){
-        Stack<Integer> s = new Stack<>();
-        int[] v = new int[n];
-        for(int i=2*n-1;i>=0;i--){
-            if(s.isEmpty()){
-                v[i%n] =  -1;
-            }
-            else if(!s.isEmpty() && s.peek()>arr[i%n]){  
-                v[i%n] = s.peek();
-            }else if(!s.isEmpty() && s.peek()<=arr[i%n]){
-                while(!s.isEmpty() && s.peek()<=arr[i%n]){
+    public static int solve(String str ){
+        Stack<Character> s = new Stack<>();
+        int sum = 0;
+        for(int i=0;i<str.length();i++){
+            char ch = str.charAt(i);
+            if(ch==')'){
+                if(s.peek()=='('){
                     s.pop();
+                    s.push('1');
+                }else{
+                    while(s.peek()!='('){
+                        sum+=s.pop()-'0';
+                    }
+                    s.pop();
+                    s.push((char)(2*sum+'0'));
                 }
-                v[i%n]=s.isEmpty()?-1:s.peek();
+
+            }else{
+                s.push(ch);
             }
-            s.push(arr[i%n]);
         }
-        return v;
+        int res = 0;
+        while(!s.isEmpty()){
+            res+=s.pop()-'0';
+        }
+        return res;
     }
     public static void main(String[] args) {
-        int[] num2 = {1,2,1};
-        int[] v = solve(num2, num2.length);
-        for(int i=0;i<v.length;i++){
-            System.out.print(v[i]+" ");
-        }
+        System.out.println(solve("(())"));
+
 
         
 

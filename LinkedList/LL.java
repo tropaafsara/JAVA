@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class LL {
@@ -15,7 +16,7 @@ public class LL {
     public static Node tail;
     public static int size ; //by default size=0;
 
-    public void addFirst(int data){
+    public void addFirst(int data){//O(1)
         //create new node
         Node newNode = new Node(data);
         size++;
@@ -26,7 +27,7 @@ public class LL {
         newNode.next = head;
         head = newNode;
     }
-    public void addLast(int data){
+    public void addLast(int data){//O(1)
         //create new node
         Node newNode = new Node(data);
         size++;
@@ -56,8 +57,6 @@ public class LL {
         //create new node
         Node newNode = new Node(data);
         size++;
-
-        //
         Node temp = head;
         int i =0;
         //add
@@ -127,16 +126,22 @@ public class LL {
     }
 
     public int helper(Node head, int key){
-        if(head ==null){
-            return -1;
-        }
-        if(head.data ==key){
+        // if(head ==null){
+        //     return -1;
+        // }
+        // if(head.data ==key){
+        //     return 0;
+        // }
+        // int idx = helper(head.next, key);
+        // if(idx==-1){
+        //     return -1;
+        // }
+        // return idx+1;
+
+        if(head.data==key){
             return 0;
         }
-        int idx = helper(head.next, key);
-        if(idx==-1){
-            return -1;
-        }
+        int idx = helper(head.next,key);
         return idx+1;
     }
     public int recSearch(int key){
@@ -165,29 +170,30 @@ public class LL {
             sz++;
         }
 
-
         //remove First
         if(n==sz){
             head = head.next;
             return;
         }
 
-        //sz-n
+        //main code
         int i=1;
-        int iToFind = sz-n;
+        int iToFind = sz-n+1;
         Node prev = head;
-        while(i<iToFind){
+        while(i<iToFind-1){
             prev = prev.next;
             i++;
-
         }
         prev.next = prev.next.next;
         return;
     }
+    //palindrome linkedlist
     //Slow-Fast approach
     public Node findMid(Node head){ //helper
         Node slow = head;
         Node fast = head;
+        //even : fast = null 
+        //odd : fast.next = null
         while(fast != null && fast.next!=null ){
             slow =slow.next; //+1
             fast =fast.next.next; //+2
@@ -202,6 +208,7 @@ public class LL {
         Node midNode = findMid(head);
 
         //reverse 2nd half
+        /* to travel backwards we need to reverse linkedlist otherwise we cannot reverse it */
         Node prev = null;
         Node curr = midNode;
         Node next;
@@ -213,7 +220,7 @@ public class LL {
         }
 
         //right left initialization
-        Node right = prev; //right half head
+        Node right = prev; //right half head cz curr is null 
         Node left = head;
         //check left & right half for palindrome
         while(right!=null){
@@ -238,6 +245,17 @@ public class LL {
         return false;//cycle doesn't exist
 
     }
+
+    /* 1. detect cycle
+                //slow -> +1
+                //fast -> +2
+     * 2. find last node - >
+     *      slow = head
+     *      slow -> +1
+     *      fast -> +1
+     *      last node = prev of fast
+     * 1. point last node next to null
+     */
     public static void removeCycle(){
         //detect cycle
         Node slow = head;
@@ -257,21 +275,19 @@ public class LL {
 
         //find meeting point
         slow = head;
-        Node prev = null;//last node
+        Node last = null;//last node
         while(fast != slow){
-            prev = fast;
+            last = fast;
             slow = slow.next;
             fast = fast.next;
         }
         //remove cycle -> last.next = null;
-        prev.next = null;
+        last.next = null;
     }
     public static Node detectCycle() {
         //detect cycle
         Node slow = head;
         Node fast = head;
-        
-        
         while(fast!= null && fast.next!=null){
             slow = slow.next;
             fast = fast.next.next;
@@ -329,6 +345,19 @@ public class LL {
     }
     public static void main(String[] args) {
         LL ll = new LL();
+
+        // ll.addFirst(1);
+        // ll.addFirst(2);
+        // ll.addFirst(3);
+        // ll.addLast(9);
+        // ll.addFirst(4);
+        // ll.addLast(8);
+        // //4->3->2->1->9->8
+        // ll.add(1, 10);
+        // ll.print();
+        // System.out.println(size);
+
+        
         // ll.print();
         // ll.addFirst(2);
         // // ll.print();

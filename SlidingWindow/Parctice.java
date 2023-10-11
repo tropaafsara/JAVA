@@ -3,36 +3,47 @@ import java.util.HashMap;
 import java.util.List;
 
 public class Parctice {
-   public static int longk(String s, int k){
-    HashMap<Character, Integer> hm = new HashMap<>();
-    int i=0,j=0;
-    int max =-1;
-    while(j<s.length()){
-        char ch = s.charAt(j);
-        hm.put(ch, hm.getOrDefault(ch, 0)+1);
-        if(hm.size()<k){
-            j++;
+   public static int solve(String str1, String str2){
+        int k = str2.length();
+        HashMap<Character,Integer> hm = new HashMap<>();
+        int i=0;
+        int j = 0;
+        int ans = 0;
+        for(int l=0;l<str2.length();l++){
+            hm.put(str2.charAt(l), hm.getOrDefault(str2.charAt(l), 0)+1);
         }
-        else if(hm.size()==k){
-            max = Math.max(max, j-i+1);
-            j++;
-        }else if(hm.size()>k){
-            while(hm.size()>k){
-                char ch2 = s.charAt(i);
-                hm.put(ch2, hm.get(ch2)-1);
-                if(hm.get(ch2)==0){
-                    hm.remove(ch2);
+        int cnt = hm.size();
+        while(j<str1.length()){
+            if(hm.containsKey(str1.charAt(j))){
+                int count = hm.get(str1.charAt(j));
+                count-=1;
+                hm.put(str1.charAt(i), count);
+                if(count==0){
+                    cnt--;
+                }
+            }
+            if(j-i+1<k){
+                j++;
+            }else if(j-i+1==k){
+                if(cnt==0){
+                    ans++;
+                }
+                if(hm.containsKey(str1.charAt(i))){
+                    int count = hm.get(str1.charAt(i));
+                    count+=1;
+                    hm.put(str1.charAt(i), count);
+                    if(count==1){
+                        cnt++;
+                    }
                 }
                 i++;
+                j++;
             }
-            j++;
         }
-    }
-    return max;
+        return ans;
    }
     public static void main(String[] args) {
-       String s = "aabacbebebe";
-       int k=3;
-       System.out.println(longk(s,k));
+       String s = "forxxorfxdofr";
+       System.out.println(solve(s,"for"));
     }
 }

@@ -40,19 +40,19 @@ public class BFS {
         graph[6].add(new Edge(6, 5, 1));
     }
 
-    public static void bfs(ArrayList<Edge>[] graph){ //O(V+E) || O(V^2)
+    public static void bfs(ArrayList<Edge>[] graph){ //O(V+E) for adjacency list || O(V^2) for matrix
         Queue<Integer> q = new LinkedList<>();
         q.add(0);//src
         boolean visited[] = new boolean[graph.length];
         while(!q.isEmpty()){
             int curr = q.remove();
             if(!visited[curr]){
-                System.out.println(curr+" ");
-                visited[curr] = true;
+                System.out.println(curr+" ");//print
+                visited[curr] = true;//visit
                 //find neighbors of a graph
                 for(int i=0;i<graph[curr].size();i++){
                     Edge e = graph[curr].get(i);
-                    q.add(e.dest);
+                    q.add(e.dest);//add neighbor in queue
                 }
             }
         }

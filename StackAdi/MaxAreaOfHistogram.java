@@ -111,18 +111,19 @@ public class MaxAreaOfHistogram {
 
     public static void main(String[] args) {
         // max area of histogram
-        int[] stocks = {6,2,5,4,5,1,6};
+        int[] stocks = {4,1,2,4,6,2,5};
+        // int[] stocks = {6,2,5,4,5,1,6};
         // int[] stocks = {2,1,5,6,2,3};
         int v = maxAreaOfHistogram(stocks, stocks.length);
         System.out.println(v);
 
-        int n = 4;// row
-        int m = 5;// col
-        int M[][] = { { 1, 0, 1, 0, 0 },
-                { 1, 0, 1, 1, 1 },
-                { 1, 1, 1, 1, 1 },
-                { 1, 0, 0, 1, 0 }
-        };
+        // int n = 4;// row
+        // int m = 5;// col
+        // int M[][] = { { 1, 0, 1, 0, 0 },
+        //         { 1, 0, 1, 1, 1 },
+        //         { 1, 1, 1, 1, 1 },
+        //         { 1, 0, 0, 1, 0 }
+        // };
         // int M[][] = {{0, 1, 1, 0},
         // {1, 1, 1, 1},
         // {1, 1, 1, 1},
