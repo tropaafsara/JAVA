@@ -1,64 +1,47 @@
 public class Practice {
-    public static int knapsack(int val[], int wt[], int W, int n){
-        if(n==0 || W ==0){
+    public static int lcsMemo(String s1, String s2, int n, int m, int[][] dp){
+        if(n==0 || m==0){
             return 0;
         }
-        if(wt[n-1]<=W){
-            int include = val[n-1]+knapsack(val, wt, W-wt[n-1], n-1);
-            int exclude = knapsack(val, wt, W, n-1);
-            return Math.max(include,exclude);
+        if(dp[n][m]!=-1){
+            return dp[n][m];
+        }
+        if(s1.charAt(n-1)==s2.charAt(n-2)){
+            return lcsMemo(s1, s2, n-1, m-1, dp)+1;
         }else{
-            return knapsack(val, wt, W, n-1);
+            int ans1 = lcsMemo(s1, s2, n, m-1, dp);
+            int ans2 = lcsMemo(s1, s2, n-1, m, dp);
+            return dp[n][m] = Math.max(ans1, ans2);
         }
+
     }
-    public static int knapsackMemo(int val[], int wt[], int W, int n,int[][] dp){
-        if(n==0 || W ==0){
-            return 0;
-        }
-        if(dp[n][W]!=-1){
-            return dp[n][W];
-        }
-        if(wt[n-1]<=W){
-            int include = val[n-1]+knapsackMemo(val, wt, W-wt[n-1], n-1,dp);
-            int exclude = knapsackMemo(val, wt, W, n-1,dp);
-            dp[n][W] = Math.max(include,exclude);
-            return dp[n][W];
-        }else{
-            dp[n][W] = knapsackMemo(val, wt, W, n-1,dp);
-            return dp[n][W];
-        }
-    }
-    public static int knapsackTab(int val[], int wt[], int W, int n){
-        int[][] dp = new int[n+1][W+1];
-        for(int i=0;i<dp.length;i++){//row
-            dp[i][0] = 0;
-        }
-        for(int i=0;i<dp[0].length;i++){//col
-            dp[0][i] = 0;
-        }
-        for(int i=1;i<n+1;i++){//row = n = i
-            for(int j=1;j<W+1;j++){//col = W = j
-                if(wt[i-1]<=j){
-                    int include = val[i-1]+dp[i-1][j-wt[i-1]];
-                    int exclude = dp[i-1][j];
-                    dp[i][j] = Math.max(include, exclude);
-                }else{
-                    dp[i][j] = dp[i-1][j];
-                }
+    public static int lcs(String s1, String s2){
+        int n = s1.length();
+        int m = s2.length();
+        int[][] dp = new int[n+1][m+1];
+        for(int i=0;i<n+1;i++){
+            for(int j=0;j<m+1;j++){
+                dp[i][j] = -1;
             }
         }
-        return dp[n][W];
+        return lcsMemo(s1,s2,n,m,dp);
+    }
+
+    public static int longestCommonSubsequence(String s1, String s2, int n, int m){
+        if(n==0||m==0){
+            return 0;
+        }   
+        if(s1.charAt(n-1)==s2.charAt(m-1)){
+            return longestCommonSubsequence(s1, s2, n-1,m-1)+1;
+        }else{
+            int ans1 = longestCommonSubsequence(s1, s2, n, m-1);
+            int ans2 = longestCommonSubsequence(s1, s2, n-1, m);
+            return Math.max(ans1, ans2);
+        }
     }
     public static void main(String[] args) {
-        int val[] = {15,14,10,45,30};
-        int wt[] = {2,5,1,3,4};
-        int W = 7;
-        int[][] dp = new int[val.length+1][W+1];
-        for(int i=0;i<dp.length;i++){
-            for(int j=0;j<dp[0].length;j++){
-                dp[i][j]=-1;
-            }
-        }
-        System.out.println(knapsackMemo(val,wt,W,val.length,dp));
+        String s1 = "abcde";
+        String s2 = "abcodpe";
+        longestCommonSubsequence(s1, s2, s1.length(), s2.length());
     }
 }

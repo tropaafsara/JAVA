@@ -1,30 +1,34 @@
+import java.util.ArrayList;
+import java.util.Deque;
+import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.Scanner;
 
 public class C {
-    static char solveeeeee(String s, int pos) {
-        int n = s.length();
-        int len = n*(n+1)/2;
-        int i=0;
-        while (i <n && pos > 0) {
-            int nextChars = len -(i + 1) * (n - i) / 2; 
-            if (pos <= nextChars) {
-                return s.charAt(i);
-            }
-            pos-= nextChars;
-            i++;
+    public static int count(int[] arr, int k){
+        for(int i=0;i<arr.length;i++){
+            arr[i] = arr[i]%2==0?0:1;
         }
-        return '\0';
+        int i=0;
+        int j=0;
+        int ps = 0;
+        int ans = 0;
+        while(j<arr.length){
+            ps+=arr[j];
+            while(ps>=k){
+                ans++;
+                ps-=arr[i];
+                i++;
+            }
+            j++;
+        }
+        return ans;
+        
     }
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int t = sc.nextInt();
-        while(t-->0){
-            String s = sc.next();
-            int pos = sc.nextInt();
+        int[] arr = {1,1,2,1,1};
+        int k =3;
+        System.out.println(count(arr, k));
 
-            char result = solveeeeee(s, pos);
-            System.out.println();
-            System.out.print(result);
-        }
     }
 }

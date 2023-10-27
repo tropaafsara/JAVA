@@ -128,7 +128,7 @@ public class BinarySearch {
         return res;
     }
     //744. Find Smallest Letter Greater Than Target
-    public static char floor2(char[] arr, char val){
+    public static char ceil(char[] arr, char val){
         int start =0;
         int end =arr.length-1;
         char res =arr[0];
